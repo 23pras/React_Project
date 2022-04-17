@@ -49,10 +49,14 @@ export default function Navbar(props) {
   );
 }
 
+// here we are defining that our props should be of string type.
+
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
   about: PropTypes.string.isRequired,
 };
+
+// here we are creating some default props.
 
 Navbar.defaultProps = {
   title: "Enter title here",
