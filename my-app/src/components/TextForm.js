@@ -13,6 +13,19 @@ export default function TextForm(props) {
     setText(newText);
   };
 
+  const handleReplace = () => {
+    //console.log(text);
+    // let newText = text.replace(/[ ]/, "Prashant_Pal");
+    let newText = text.replace(/Prashant/i, "Prashant Pal");
+    setText(newText);
+  };
+
+  const handleClear = (e) => {
+    
+    let newText = "";
+    setText(newText);
+  };
+
   // this handleOnChange fun helps us writing in editor.
 
   const handleOnChange = (event) => {
@@ -36,12 +49,23 @@ export default function TextForm(props) {
             id="myBox"
             rows="8"
           ></textarea>
+
           <button className="btn btn-primary mx-2" onClick={handleUpClick}>
             Convert to UpperCase
           </button>
+
           <button className="btn btn-primary mx-2" onClick={handleLoClick}>
             Convert to LowerCase
           </button>
+
+          <button className="btn btn-primary mx-2" onClick={handleReplace}>
+            Replace Word
+          </button>
+
+          <button className="btn btn-primary mx-2" onClick={handleClear}>
+            Clear All
+          </button>
+
         </div>
       </div>
 
