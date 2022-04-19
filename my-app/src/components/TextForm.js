@@ -5,12 +5,15 @@ export default function TextForm(props) {
     //console.log("uppercase was clicked");
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase", "success");
   };
 
   const handleLoClick = (e) => {
     //console.log("uppercase was clicked");
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to lowercase", "success");
+
   };
 
   const handleReplace = () => {
@@ -18,12 +21,14 @@ export default function TextForm(props) {
     // let newText = text.replace(/[ ]/, "Prashant_Pal");
     let newText = text.replace(/Prashant/i, "Prashant Pal");
     setText(newText);
+    props.showAlert("Name Replaced", "success");
   };
 
   const handleClear = (e) => {
     
     let newText = "";
     setText(newText);
+    props.showAlert("TextBox CLeared", "success");
   };
 
   // this handleOnChange fun helps us writing in editor.
@@ -39,12 +44,13 @@ export default function TextForm(props) {
 
   return (
     <>
-      <div className="container">
+      <div className="container" style = {{color : props.mode==='dark'? 'white' : '#042743'}}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
             className="form-control my-3"
             value={text}
+            style = {{backgroundColor : props.mode==='dark'? 'grey' : 'white', color : props.mode==='dark'? 'white' : '#042743'}}
             onChange={handleOnChange}
             id="myBox"
             rows="8"
@@ -69,12 +75,12 @@ export default function TextForm(props) {
         </div>
       </div>
 
-      <div className="container my-3">
+      <div className="container my-3" style = {{color : props.mode==='dark'? 'grey' : '#042743'}}>
         <h2>Your Summary here</h2>
         <p>{text.split(" ").length} words & {text.length} Characters</p>
         <p>{0.008 *text.split(" ").length} Minutes read</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length>0 ? text:"Enter some text to preview"}</p>
       </div>
     </>
   );
